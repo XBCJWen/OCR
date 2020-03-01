@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">OCR</string>
+    <string name="moneywater">流水</string>
+    <string name="money">钱包</string>
+    <string name="count">统计</string>
+    <string name="my">我的</string>
+
+</resources>
