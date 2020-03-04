@@ -1,4 +1,4 @@
-package com.example.ocr;
+package com.example.ocr.Guide;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import com.example.ocr.MainActivity;
+import com.example.ocr.R;
 
 import java.util.ArrayList;
 import java.util.List;

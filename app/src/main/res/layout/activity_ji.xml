@@ -40,24 +40,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="支出"
-                android:textColor="@android:color/black"
+                android:textColor="#2B2B2B"
                 android:textSize="16sp" />
         </LinearLayout>
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/colorAccent" />
-
     <ImageView
         android:id="@+id/main_tab_line"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/slider"
-        />
+        android:layout_height="1dp"
+        android:src="@drawable/slider" />
 
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/main_pager"

@@ -1,4 +1,4 @@
-package com.example.ocr;
+package com.example.ocr.Guide;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,10 @@ import android.os.Handler;
 import android.os.Message;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.ocr.MainActivity;
+import com.example.ocr.R;
+import com.example.ocr.Utils.ShareUtils;
 
 /*
  *  描述： 启动页

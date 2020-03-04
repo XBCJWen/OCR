@@ -8,15 +8,15 @@
 
     <fragment
         android:id="@+id/moneywater"
-        android:name="com.example.ocr.ui.money.MoneyFragment"
+        android:name="com.example.ocr.ui.moneywater.MoneywaterFragment"
         android:label="@string/moneywater"
-        tools:layout="@layout/fragment_money" />
+        tools:layout="@layout/fragment_moneywater" />
 
     <fragment
         android:id="@+id/money"
-        android:name="com.example.ocr.ui.moneywater.MoneywaterFragment"
+        android:name="com.example.ocr.ui.moeny.MoneyFragment"
         android:label="@string/money"
-        tools:layout="@layout/fragment_moneywater" />
+        tools:layout="@layout/fragment_money" />
 
     <fragment
         android:id="@+id/count"

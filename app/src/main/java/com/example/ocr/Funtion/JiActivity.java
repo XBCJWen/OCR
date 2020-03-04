@@ -1,4 +1,4 @@
-package com.example.ocr;
+package com.example.ocr.Funtion;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.ocr.Adapter.PagerAdapter_ji;
+import com.example.ocr.R;
 import com.example.ocr.frame.BaseFrame;
 import com.example.ocr.ui.tabbar.InputFragment;
 import com.example.ocr.ui.tabbar.OutputFragment;
@@ -42,7 +43,6 @@ public class JiActivity extends AppCompatActivity implements View.OnClickListene
         initWidth(); // 初始化滑动横条的宽度
         setListener(); // 设置监听器
 
-
     }
 
     private void init() {
@@ -60,7 +60,7 @@ public class JiActivity extends AppCompatActivity implements View.OnClickListene
         adapter = new PagerAdapter_ji(getSupportFragmentManager(), mFragmentList);
         mViewPager.setAdapter(adapter);
         mViewPager.setCurrentItem(0);
-        text0.setTextColor(Color.BLUE);
+        text0.setTextColor(Color.parseColor("#DF7893"));
     }
 
     private void setListener() {
@@ -89,10 +89,10 @@ public class JiActivity extends AppCompatActivity implements View.OnClickListene
                 resetTextView();
                 switch (position) {
                     case 0:
-                        text0.setTextColor(Color.BLUE);
+                        text0.setTextColor(Color.parseColor("#DF7893"));
                         break;
                     case 1:
-                        text1.setTextColor(Color.BLUE);
+                        text1.setTextColor(Color.parseColor("#DF7893"));
                         break;
                 }
             }
