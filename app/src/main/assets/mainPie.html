@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>0206</title>
+    <script type="text/javascript" src="./echarts.min.js"></script>
+
+</head>
+<style>    html , body , .content {
+    width:100%;
+    height:100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: navajowhite;
+}
+.content {
+    padding: 40px;
+}
+.header {
+    height: 10%;
+    width: 100%;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 60px;
+    text-align: center;
+}
+.body {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.chartBox {
+    width: 100%;
+    height: 80%;
+    margin-bottom:40px;
+}</style>
+<body>
+<div class="content">
+        <div class="header">0206Exercise</div>
+        <div class="body">
+<!--            <div class="chartBox" id="chartLine"></div>-->
+            <div class="chartBox" id="chartPie"></div>
+        </div>
+    </div>
+</body>
+<script>
+<!--    var chartLine='chartLine';-->
+    var chartPie='chartPie';
+
+    initPie();
+
+
+    function initPie() {
+        PieObj = echarts.init(document.getElementById(chartPie));
+        optionPie = {
+            title:{
+                text:'Pie',
+                left:'center',
+                textStyle:{
+                    color:'red',
+                    fontStyle:'italic',
+                    fontWeight:'bold'
+                }
+            },
+            tooltip:{
+                formatter: '{a} {b}:{c}({d})'
+            },
+            legend:{
+                bottom:'5%'
+            },
+            toolbox:{
+                feature:{
+                    saveImage:{}
+                }
+            },
+            series:[
+                {
+                    name:'q',
+                    type:'pie',
+                    data:[
+                        {value:34,name:'er'},
+                        {value:4,name:'er'},
+                        {value:374,name:'er'}
+                    ]
+                }
+            ]
+        };
+        PieObj.setOption(optionPie);
+
+
+
+        }
+</script>
+</html>

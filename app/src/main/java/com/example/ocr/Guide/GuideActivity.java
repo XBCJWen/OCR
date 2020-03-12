@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -35,7 +36,7 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide);
-
+        acBar();
         initView();
     }
 
@@ -103,7 +104,16 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
         });
 
     }
+    private void acBar() {
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.bottomback));
+//        if (actionBar != null) {
+//            actionBar.setHomeButtonEnabled(true);
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//        }
+
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

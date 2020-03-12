@@ -140,6 +140,7 @@ public class JiActivity extends AppCompatActivity implements View.OnClickListene
     private void acBar() {
 
         ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.bottomback));
         actionBar.setTitle("记一笔");
         if (actionBar != null) {
             actionBar.setHomeButtonEnabled(true);

@@ -3,22 +3,23 @@
 
     <item
         android:id="@+id/moneywater"
-        android:icon="@drawable/moneywater"
+        android:icon="@drawable/business"
         android:title="@string/moneywater" />
 
     <item
         android:id="@+id/money"
-        android:icon="@drawable/money1"
-        android:title="@string/money" />
+        android:icon="@drawable/money11"
+        android:title="@string/money"
+        />
 
     <item
         android:id="@+id/count"
-        android:icon="@drawable/count"
+        android:icon="@drawable/count22"
         android:title="@string/count" />
 
     <item
         android:id="@+id/my"
-        android:icon="@drawable/user2"
+        android:icon="@drawable/user11"
         android:title="@string/my" />
 
 </menu>

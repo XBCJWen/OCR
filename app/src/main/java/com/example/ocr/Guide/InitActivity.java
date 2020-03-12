@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ocr.MainActivity;
@@ -54,12 +55,22 @@ public class InitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_init);
         initView();
+        acBar();
     }
+    private void acBar() {
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.bottomback));
+//        if (actionBar != null) {
+//            actionBar.setHomeButtonEnabled(true);
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//        }
+
+    }
     //初始化View
     private void initView() {
         //延时2000ms
-        handler.sendEmptyMessageDelayed(HANDLER_SPLASH, 2000);
+        handler.sendEmptyMessageDelayed(HANDLER_SPLASH, 1000);
     }
 
     //判断程序是否第一次运行
