@@ -106,7 +106,7 @@ public class ViewPagerAdapter1 extends PagerAdapter {
                             }
                             float userMoneyTotal = Float.valueOf(UserTotal) + Float.valueOf(money);
 
-                            String s = String.format("INSERT INTO water VALUES ('%s','%s','%s','%s','%s','%s')",User,moneytal,userMoneyTotal,"支出",distanceString,nowtime);
+                            String s = String.format("INSERT INTO water VALUES ('%s','%s','%s','%s','%s','%s')",User,moneytal,userMoneyTotal,"支出",distanceString,"03/26-27");
                             String alter = String.format("UPDATE userphone SET total = total+'%s' where i = 1",distanceString);
 
                             String moneySql2 = String.format("UPDATE money SET total = total+'%s' where username = '%s'",distanceString,User);
@@ -180,7 +180,7 @@ public class ViewPagerAdapter1 extends PagerAdapter {
                             }
                             float userMoneyTotal = Float.valueOf(UserTotal) - Float.valueOf(money);
 
-                            String s = String.format("INSERT INTO water VALUES ('%s','%s','%s','%s','%s','%s')",User2,moneytal,userMoneyTotal,"收入",distanceString2,nowtime);
+                            String s = String.format("INSERT INTO water VALUES ('%s','%s','%s','%s','%s','%s')",User2,moneytal,userMoneyTotal,"收入",distanceString2,"03/26-27");
 
 
 

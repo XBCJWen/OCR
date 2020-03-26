@@ -41,7 +41,7 @@
             optionLine = {
                 title:{
                     text:'数据分析',
-                    subtext:'线性图分析',
+                    subtext:'柱状图分析',
                     left:'center',
                     textStyle:{
                         color:'red',
@@ -55,9 +55,9 @@
                 tooltip: {
                     bottom:'5%',
 <!--                    formatter:'{a}:{b} {c}',/-->
-                    trigger: 'axis',
+                    trigger: 'item',
                     axisPointer: {
-                        type: 'cross',
+                        type: 'axis',
                         label: {
                             backgroundColor: '#6a7985'
                         }
@@ -76,7 +76,7 @@
                 xAxis: [
                     {
                         type: 'category',
-                        boundaryGap: false,
+<!--                        boundaryGap: false,-->
                         data: xData,
                         axisLabel: {
                               interval:0,
@@ -92,7 +92,7 @@
                 series:[
                     {
                         name:'收入',
-                        type:'line',
+                        type:'bar',
                         data:inData,
                         color:'red',
                         label: {
@@ -105,7 +105,7 @@
 <!--                        areaStyle:{}-->
                     },{
                         name:'支出',
-                        type:'line',
+                        type:'bar',
                         data:outData,
                         color:'green',
                         label: {

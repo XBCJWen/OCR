@@ -3,7 +3,6 @@ package com.example.ocr.ui.moneywater;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -97,7 +96,6 @@ public class MoneywaterFragment extends Fragment {
                 lists.remove(id);
                 adapter.notifyDataSetChanged();
                 String nowtime = (String) map.get("date");
-                Log.d("ttttttttttttttttttttime", "onContextItemSelected:"+map);
                 List<String> sqlist = new ArrayList<>();
                 String sql = String.format("delete from water where jitime = '%s'", nowtime);
 

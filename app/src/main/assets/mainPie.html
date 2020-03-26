@@ -44,8 +44,10 @@
 <script>
     var chartPie='chartPie';
 
-    initPie();
-    function initPie() {
+<!--    initPie([{name:'er',value:34},{name:'ab',value:4},{name:'cd',value:374}]);-->
+<!--    initPie([{"value":"5.0","name":"'微信'"}, {"value":"36.0","name":"'支付宝'"}]);-->
+
+    function initPie(Data) {
         PieObj = echarts.init(document.getElementById(chartPie));
         optionPie = {
             title:{
@@ -59,7 +61,7 @@
                 }
             },
             tooltip:{
-                formatter: '{a} {b}:{c}({d})'
+                formatter: '{b}:{c} ({d}%)'
             },
             legend:{
                 bottom:'5%'
@@ -71,14 +73,17 @@
             },
             series:[
                 {
-                    name:'q',
+                    name:'帐户占比',
                     type:'pie',
-                    data:[
-                        {value:34,name:'er'},
-                        {value:4,name:'ab'},
-                        {value:374,name:'cd'}
-                    ]
-                }
+                    data:Data,
+                    emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                        }
+                    }
             ]
         };
         PieObj.setOption(optionPie);
