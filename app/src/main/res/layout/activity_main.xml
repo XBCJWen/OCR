@@ -205,27 +205,27 @@
         app:menu="@menu/bottom_nav_menu"
         tools:ignore="MissingConstraints" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="15dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/nav_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout"-->
+<!--        android:layout_width="70dp"-->
+<!--        android:layout_height="70dp"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/nav_view"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        tools:ignore="MissingConstraints">-->
 
-        <Button
-            android:id="@+id/btn_ji"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:background="@drawable/yuan_back"
-            android:gravity="center_horizontal"
-            android:text="記"
-            android:textSize="24sp" />
-    </LinearLayout>
+<!--        <Button-->
+<!--            android:id="@+id/btn_ji"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/yuan_back"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:text="記"-->
+<!--            android:textSize="24sp" />-->
+<!--    </LinearLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

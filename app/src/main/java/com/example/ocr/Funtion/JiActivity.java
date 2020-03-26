@@ -14,24 +14,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.ocr.Adapter.PagerAdapter_ji;
+import com.example.ocr.Adapter.ViewPagerAdapter1;
 import com.example.ocr.R;
 import com.example.ocr.frame.BaseFrame;
-import com.example.ocr.ui.tabbar.InputFragment;
-import com.example.ocr.ui.tabbar.OutputFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class JiActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView text0;
-    TextView text1;
-    ImageView tab_line;
-    ViewPager mViewPager;
+    private TextView text0;
+    private TextView text1;
+    private ImageView tab_line;
+    private ViewPager mViewPager;
+    private View view1, view2;
+    private List<View> mList = new ArrayList<>();
 
     private int screenWidth;
     private List<BaseFrame> mFragmentList = new ArrayList<>();
-    private  PagerAdapter_ji adapter;
+    private PagerAdapter_ji adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class JiActivity extends AppCompatActivity implements View.OnClickListene
 
     }
 
+
     private void init() {
         mViewPager = findViewById(R.id.main_pager);
         text0 = findViewById(R.id.tv_input);
@@ -55,13 +57,19 @@ public class JiActivity extends AppCompatActivity implements View.OnClickListene
 
     private void initData() {
         // 将我们自定义 Fragment 的对象添加到 List<BaseFragment> 中。
-        mFragmentList.add(new InputFragment());
-        mFragmentList.add(new OutputFragment());
-        adapter = new PagerAdapter_ji(getSupportFragmentManager(), mFragmentList);
-        mViewPager.setAdapter(adapter);
+
+        view1 = View.inflate(this, R.layout.fragment_input, null);
+        view2 = View.inflate(this, R.layout.fragment_output, null);
+        mList.add(view1);
+        mList.add(view2);
+
+        //初始化
+        mViewPager.setOffscreenPageLimit(1);
+        mViewPager.setAdapter(new ViewPagerAdapter1(mList,getBaseContext()));
         mViewPager.setCurrentItem(0);
-        text0.setTextColor(Color.parseColor("#DF7893"));
+        text0.setTextColor(Color.WHITE);
     }
+
 
     private void setListener() {
 
@@ -89,10 +97,10 @@ public class JiActivity extends AppCompatActivity implements View.OnClickListene
                 resetTextView();
                 switch (position) {
                     case 0:
-                        text0.setTextColor(Color.parseColor("#DF7893"));
+                        text0.setTextColor(Color.WHITE);
                         break;
                     case 1:
-                        text1.setTextColor(Color.parseColor("#DF7893"));
+                        text1.setTextColor(Color.WHITE);
                         break;
                 }
             }
@@ -130,6 +138,7 @@ public class JiActivity extends AppCompatActivity implements View.OnClickListene
             case R.id.tv_input:
                 mViewPager.setCurrentItem(0);
                 break;
+
             case R.id.tv_output:
                 mViewPager.setCurrentItem(1);
                 break;
@@ -153,7 +162,7 @@ public class JiActivity extends AppCompatActivity implements View.OnClickListene
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                this.finish(); // back button
+                finish(); // back button
                 return true;
         }
         return super.onOptionsItemSelected(item);

@@ -49,6 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/add_user"
+                    android:focusable="true"
                     android:ems="10"
                     android:hint="请输入帐户名"
                     android:inputType="textPersonName"
@@ -92,13 +93,13 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_add_user"
+                android:id="@+id/btn_sure"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/addbtn"
-                android:text="新建帐户"
+                android:text="确定修改账户信息"
                 android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>

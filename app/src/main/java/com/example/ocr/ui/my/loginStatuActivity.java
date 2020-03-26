@@ -1,11 +1,10 @@
-package com.example.ocr.LoginUser;
+package com.example.ocr.ui.my;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -29,9 +28,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class loginStatuActivity extends AppCompatActivity implements View.OnClickListener {
@@ -57,14 +54,16 @@ public class loginStatuActivity extends AppCompatActivity implements View.OnClic
                 case 200:
                     String char2 = (String) msg.obj;
                     String user1 = char2.replace("\"", "");
-                    Log.d("user",user1);
                     btnLoging.setText("返回首页");
+                    List<String> listSql = new ArrayList<>();
+                    String initInsert = String.format("INSERT INTO userphone VALUES (%s,'记','0.00',1)", user1);
+                    String wexin = String.format("INSERT INTO money VALUES ('%s','0.00')","微信");
+                    String zhifu = String.format("INSERT INTO money VALUES ('%s','0.00')","支付宝");
+                    listSql.add(initInsert);
+                    listSql.add(wexin);
+                    listSql.add(zhifu);
 
-                    String initInsert = "INSERT INTO user VALUES (?, 0, 0, 0, ?)";
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss");
-                    Date date = new Date(System.currentTimeMillis());
-                    String d = simpleDateFormat.format(date);
-                    db.execSQL(initInsert,new Object []{user1,d});
+                    db.execSQL(listSql);
                     db.clear();
 
             }
@@ -75,6 +74,7 @@ public class loginStatuActivity extends AppCompatActivity implements View.OnClic
         String token = getIntent().getStringExtra("token");
         requestsIntent(token);
 
+        //初始化，db
         List<String> sql = new ArrayList<>();
         String createSql = "create table user(user int primary key,total int,weixi int,zhifu int,ntime text)";
         sql.add(createSql);
@@ -108,6 +108,7 @@ public class loginStatuActivity extends AppCompatActivity implements View.OnClic
                 break;
         }
     }
+
     private void  requestsIntent(final String token) {
         new Thread(new Runnable() {
             @Override
@@ -160,11 +161,16 @@ public class loginStatuActivity extends AppCompatActivity implements View.OnClic
             }
         }).start();
     }
+
+    //标题栏返回按钮监听
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                this.finish(); // back button
+                //登录成功后给予返回Main
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish(); // back button
                 return true;
         }
         return super.onOptionsItemSelected(item);

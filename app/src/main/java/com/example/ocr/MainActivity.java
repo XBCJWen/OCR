@@ -1,10 +1,9 @@
 package com.example.ocr;
 
 import android.Manifest;
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -17,7 +16,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.ocr.DB.DataBaseOpenHelper;
-import com.example.ocr.Funtion.JiActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.SimpleDateFormat;
@@ -29,21 +27,22 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button btnJi;
     private DataBaseOpenHelper db;
+    private BottomNavigationView navView;
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView = findViewById(R.id.nav_view);
 //         Passing each menu ID as a set of Ids because each
 //         menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.moneywater, R.id.money, R.id.count,R.id.my)
                 .build();
-
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
         init();
@@ -65,21 +64,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        initInsert();
         acBar();
         getFilePermission();
-        btnJi = (Button) findViewById(R.id.btn_ji);
-        btnJi.setOnClickListener(this);
 
+        navView.setSelectedItemId(navView.getMenu().getItem(0).getItemId());
 
     }
 
     private void initsql() {
         List<String> sql = new ArrayList<>();
-        String createSql = "create table user(user int primary key,total int,weixi int,zhifu int,ntime text)";
-        sql.add(createSql);
+        String createUser = "create table userphone(user integer primary key,name text,total text,i integer)";
+        String createWater = "create table water(username text ,moneyTotal text,UserTotal text,moneyCategory text,money text,jitime text,foreign key(username) references money(username))";
+        String createMoney = "create table money(username text primary key,total text)";
+
+
+        sql.add(createUser);
+        sql.add(createWater);
+        sql.add(createMoney);
+
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日HH:mm:ss");
         Date date = new Date(System.currentTimeMillis());
         String d = simpleDateFormat.format(date);
         db = DataBaseOpenHelper.getInstance(MainActivity.this,"ocrSql",1,sql);
         db.getWritableDatabase();
+        db.clear();
 
     }
 
@@ -114,9 +120,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btn_ji:
-                Intent intent = new Intent(getApplicationContext(), JiActivity.class);
-                startActivity(intent);
+//            case R.id.btn_ji:
+//                Intent intent = new Intent(getApplicationContext(), JiActivity.class);
+//                startActivity(intent);
         }
     }
 
@@ -125,10 +131,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 1) {
             Toast.makeText(this, "权限申请成功", Toast.LENGTH_SHORT).show();
-//            for (int i = 0; i < permissions.length; i++) {
-//                if (grantResults[i] == PERMISSION_GRANTED) {
-//                } else {
-//                }
             }else {
             Toast.makeText(this, "权限申请失败", Toast.LENGTH_SHORT).show();
 

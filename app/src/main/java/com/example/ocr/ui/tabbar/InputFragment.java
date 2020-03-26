@@ -1,30 +1,44 @@
 package com.example.ocr.ui.tabbar;
 
 
-import android.util.Log;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.ocr.R;
-import com.example.ocr.frame.BaseFrame;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class InputFragment extends BaseFrame {
+public class InputFragment extends Fragment{
 
-    @Override
-    public View initView() {
-        Log.e("TAG", "Fragment1 --> initView");
-        View view = View.inflate(mContext, R.layout.fragment_input, null);
-        return view;
+    private Spinner spinerUser;
+    private EditText edtMoney;
+    private Button btnInput;
+    private View root;
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        root = inflater.inflate(R.layout.fragment_my, container, false);
+        initData();
+        event();
+        return root;
     }
 
-    @Override
-    public void initData() {
-        super.initData();
-        // ......加载数据
-        Log.e("TAG", "Fragment1 --> initData");
+    private void event() {
+
+    }
+
+    private void initData() {
+        spinerUser = root.findViewById(R.id.spiner_user);
+        edtMoney = root.findViewById(R.id.edt_money);
+        btnInput = root.findViewById(R.id.btn_add_user);
+
     }
 }

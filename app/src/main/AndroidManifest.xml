@@ -25,18 +25,21 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".LoginUser.loginStatuActivity"></activity>
-        <activity android:name=".Funtion.AdduserActivity" />
+        android:theme="@style/AppTheme"
+        android:launchMode="singleTask"
+        >
+        <activity android:name=".ui.moeny.AlterUserActivity" android:launchMode="singleTask"></activity>
+        <activity android:name=".ui.my.loginStatuActivity" android:launchMode="singleTask"/>
+        <activity android:name=".ui.moeny.AdduserActivity" android:launchMode="singleTask" />
 
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/network_security_config" />
 
-        <activity android:name=".LoginUser.LoginActivity" />
-        <activity android:name=".Funtion.JiActivity" />
-        <activity android:name=".Guide.GuideActivity" />
-        <activity android:name=".Guide.InitActivity">
+        <activity android:name=".LoginUser.LoginActivity" android:launchMode="singleTask" />
+        <activity android:name=".Funtion.JiActivity"  android:launchMode="singleTask"/>
+        <activity android:name=".Guide.GuideActivity"  android:launchMode="singleTask"/>
+        <activity android:name=".Guide.InitActivity" android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,7 +48,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" /> <!-- since 2.0.0 optional 可选项，使用一键登录功能必须添加 -->
+            android:label="@string/app_name"
+            /> <!-- since 2.0.0 optional 可选项，使用一键登录功能必须添加 -->
         <!-- since 2.1.1 optional 可选项，通过screenOrientation设置授权页面横竖屏展示 -->
         <activity
             android:name="com.cmic.sso.sdk.activity.OAuthActivity"

@@ -66,7 +66,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="W"
+                            android:text="未登录"
                             android:textSize="20sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -81,7 +81,8 @@
                             android:id="@+id/tv_user_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="账号："
+                            android:layout_marginRight="5dp"
+                            android:text="账号"
                             android:textSize="16sp" />
 
                         <TextView
@@ -89,7 +90,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="12345678900"
                             android:textSize="16sp" />
                     </LinearLayout>
 

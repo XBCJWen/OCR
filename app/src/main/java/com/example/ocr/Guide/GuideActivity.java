@@ -57,6 +57,7 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
         view2 = View.inflate(this, R.layout.pager_item_two, null);
         view3 = View.inflate(this, R.layout.pager_item_three, null);
         view4 = View.inflate(this, R.layout.pager_item_four, null);
+
         view4.findViewById(R.id.btn_start).setOnClickListener(this);
 
         mList.add(view1);
@@ -115,9 +116,11 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
 
     }
     @Override
+
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_start:
+
             case R.id.btn_back:
                 startActivity(new Intent(this, MainActivity.class));
                 finish();

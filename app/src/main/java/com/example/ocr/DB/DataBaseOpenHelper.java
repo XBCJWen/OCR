@@ -68,11 +68,13 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
      * @return void
      * @author lihy
      */
-    public void execSQL(String sql,Object[] bindArgs) {
+    public void execSQL(List<String> listSql) {
         DataBaseOpenHelper dataBaseOpenHelper = dbMaps.get(nowDbName);
         synchronized (dataBaseOpenHelper) {
             SQLiteDatabase database = dataBaseOpenHelper.getWritableDatabase();
-            database.execSQL(sql,bindArgs);
+            for (String sql:listSql){
+                database.execSQL(sql);
+            }
         }
     }
 
@@ -176,29 +178,18 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
     }
     /**
      *
-     * @Description:查
-     * @param table
-     * @param columns
-     * @param selection
-     * @param selectionArgs
-     * @param groupBy
-     * @param having
-     * @param orderBy
-     * @param limit
-     * @return
-     * Cursor
-     * @exception:
-     * @author: lihy
-     * @time:2015-4-3 上午9:37:29
+     * @Description 查询，方法重载,table表名，sqlString条件
+     * @param @return
+     * @return Cursor
+     * @author lihy
      */
-    public Cursor query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having,
-                        String orderBy, String limit) {
+    public Cursor query(String sqlString) {
         DataBaseOpenHelper dataBaseOpenHelper = dbMaps.get(nowDbName);
         synchronized (dataBaseOpenHelper) {
             SQLiteDatabase database = dataBaseOpenHelper.getReadableDatabase();
             // Cursor cursor = database.rawQuery("select * from "
             // + TableName.TABLE_NAME_USER + " where userId =" + userId, null);
-            Cursor cursor = database.query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit);
+            Cursor cursor = database.rawQuery(sqlString,null);
             return cursor;
         }
     }
@@ -215,7 +206,6 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
         synchronized (dataBaseOpenHelper) {
             SQLiteDatabase database = dataBaseOpenHelper.getReadableDatabase();
             Cursor cursor = database.rawQuery("select * from " + tableName + " " + sqlString, null);
-
             return cursor;
         }
     }

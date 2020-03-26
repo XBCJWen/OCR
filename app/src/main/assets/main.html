@@ -15,15 +15,7 @@
     background-color: navajowhite;
 }
 .content {
-    padding: 40px;
-}
-.header {
-    height: 10%;
-    width: 100%;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 60px;
-    text-align: center;
+<!--    padding: 40px;-->
 }
 .body {
     height: 100%;
@@ -32,31 +24,24 @@
 }
 .chartBox {
     width: 100%;
-    height: 80%;
-    margin-bottom:40px;
+    height: 95%;
 }</style>
 <body>
 <div class="content">
-        <div class="header">0206Exercise</div>
         <div class="body">
             <div class="chartBox" id="chartLine"></div>
-<!--            <div class="chartBox" id="chartPie"></div>-->
         </div>
     </div>
 </body>
 <script>
     var chartLine='chartLine';
-<!--    var chartPie='chartPie';-->
-
-
-    initLine();
-
-
-            function initLine() {
+<!--    initLine(['1'],['2'],['03/02-20']);-->
+            function initLine(inData,outData,xData) {
             LineObj = echarts.init(document.getElementById(chartLine));
             optionLine = {
                 title:{
-                    text:'line and bar or stack',
+                    text:'数据分析',
+                    subtext:'线性图分析',
                     left:'center',
                     textStyle:{
                         color:'red',
@@ -65,53 +50,76 @@
                     }
                 },
                 legend:{
-                    bottom:'5%'
+                    bottom:'1%'
                 },
                 tooltip: {
-                    bottom:'5%  '
+                    bottom:'5%',
+<!--                    formatter:'{a}:{b} {c}',/-->
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'cross',
+                        label: {
+                            backgroundColor: '#6a7985'
+                        }
+                    }
                 },
                 toolbox:{
+                    dataZoom:{
+                    },
                     feature:{
                         saveImage:{}
                     }
                 },
-                xAxis:{
-                    data:['一','二','三','四','五','六','七']
+                grid: {
+                    bottom:'12%'
                 },
-                yAxis:[
+                xAxis: [
                     {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: xData,
+                        axisLabel: {
+                              interval:0,
+                               rotate:38
+                            }
+                    }
+                ],
 
-                    },
+                yAxis:[
                     {
 
                     }
                 ],
                 series:[
                     {
-                        name:'line',
+                        name:'收入',
                         type:'line',
-                        data:[34,32,24,25,43,54,43],
+                        data:inData,
                         color:'red',
+                        label: {
+                        normal: {
+                            show: true,
+                            position: 'top'
+                        }
                     },
-                    {
-                        name:'bar',
-                        type:'bar',
-                        stack:'tal',
-                        data:[3,4,5,6,5,7,9]
+                        areaStyle:{}
+                    },{
+                        name:'支出',
+                        type:'line',
+                        data:outData,
+                        color:'green',
+                        label: {
+                        normal: {
+                            show: true,
+                            position: 'top'
+                        }
                     },
-                    {
-                        name:'bar2',
-                        type:'bar',
-                        stack:'tal',
-                        data:[5,6,7,8,34,54,10],
-                        color:'white',
-                    }
+                        areaStyle:{}
 
+                    }
                 ]
             };
             LineObj.setOption(optionLine);
-
-
         }
 </script>
 </html>
