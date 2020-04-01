@@ -57,7 +57,6 @@ public class ViewPagerAdapter1 extends PagerAdapter {
                 while (cursor.moveToNext()){
                     String s = cursor.getString(0);
                     list.add(s);
-
                 }
 
                 Button btnKnowledge = (Button)mList.get(position).findViewById(R.id.btnInput);
@@ -98,6 +97,7 @@ public class ViewPagerAdapter1 extends PagerAdapter {
                             }
                             float moneytal = Float.valueOf(Total) + Float.valueOf(money);
                             String UserTotal = "";
+
                             while (cursor2.moveToNext()){
                                 String user = cursor2.getString(0);
                                 if (user.equals(User)){
@@ -106,7 +106,7 @@ public class ViewPagerAdapter1 extends PagerAdapter {
                             }
                             float userMoneyTotal = Float.valueOf(UserTotal) + Float.valueOf(money);
 
-                            String s = String.format("INSERT INTO water VALUES ('%s','%s','%s','%s','%s','%s')",User,moneytal,userMoneyTotal,"支出",distanceString,"03/26-27");
+                            String s = String.format("INSERT INTO water VALUES ('%s','%s','%s','%s','%s','%s')",User,moneytal,userMoneyTotal,"收入",distanceString,nowtime);
                             String alter = String.format("UPDATE userphone SET total = total+'%s' where i = 1",distanceString);
 
                             String moneySql2 = String.format("UPDATE money SET total = total+'%s' where username = '%s'",distanceString,User);
@@ -180,7 +180,7 @@ public class ViewPagerAdapter1 extends PagerAdapter {
                             }
                             float userMoneyTotal = Float.valueOf(UserTotal) - Float.valueOf(money);
 
-                            String s = String.format("INSERT INTO water VALUES ('%s','%s','%s','%s','%s','%s')",User2,moneytal,userMoneyTotal,"收入",distanceString2,"03/26-27");
+                            String s = String.format("INSERT INTO water VALUES ('%s','%s','%s','%s','%s','%s')",User2,moneytal,userMoneyTotal,"支出",distanceString2,nowtime);
 
 
 

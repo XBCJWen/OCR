@@ -70,7 +70,7 @@ public class InitActivity extends AppCompatActivity {
     //初始化View
     private void initView() {
         //延时2000ms
-        handler.sendEmptyMessageDelayed(HANDLER_SPLASH, 1000);
+        handler.sendEmptyMessageDelayed(HANDLER_SPLASH, 2000);
     }
 
     //判断程序是否第一次运行

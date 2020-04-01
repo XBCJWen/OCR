@@ -54,7 +54,6 @@ public class loginStatuActivity extends AppCompatActivity implements View.OnClic
                 case 200:
                     String char2 = (String) msg.obj;
                     String user1 = char2.replace("\"", "");
-                    btnLoging.setText("返回首页");
                     List<String> listSql = new ArrayList<>();
                     String initInsert = String.format("INSERT INTO userphone VALUES (%s,'记','0.00',1)", user1);
                     String wexin = String.format("INSERT INTO money VALUES ('%s','0.00')","微信");
@@ -65,6 +64,8 @@ public class loginStatuActivity extends AppCompatActivity implements View.OnClic
 
                     db.execSQL(listSql);
                     db.clear();
+
+                    btnLoging.setText("返回首页");
 
             }
         }

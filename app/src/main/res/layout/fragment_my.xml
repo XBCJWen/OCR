@@ -121,6 +121,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/la_auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="5"
@@ -140,7 +141,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginRight="5dp"
-                        app:srcCompat="@drawable/ji"
+                        app:srcCompat="@drawable/moneywater2"
                         tools:src="@drawable/ji" />
 
                     <TextView
@@ -180,6 +181,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/la_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/layout_back"
@@ -251,14 +253,15 @@
                         android:id="@+id/weizhi"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginRight="5dp" />
+                        android:layout_marginRight="5dp"
+                        app:srcCompat="@drawable/software" />
 
                     <TextView
                         android:id="@+id/weizhi2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:text="自动记账"
+                        android:text="关于软件"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -308,7 +311,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginRight="5dp"
-                        app:srcCompat="@drawable/exit1" />
+                        app:srcCompat="@drawable/exit" />
 
                     <TextView
                         android:layout_width="match_parent"

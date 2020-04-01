@@ -113,18 +113,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-
-
-
     }
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-//            case R.id.btn_ji:
-//                Intent intent = new Intent(getApplicationContext(), JiActivity.class);
-//                startActivity(intent);
-        }
-    }
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -137,5 +128,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         }
 
-
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+        }
+    }
 }

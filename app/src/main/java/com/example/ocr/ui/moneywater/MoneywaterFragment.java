@@ -124,9 +124,9 @@ public class MoneywaterFragment extends Fragment {
             Map<String, Object> map = new HashMap<>();
             map.put("user2",waterCursor.getString(0)+"余额");
             if (category.equals("收入")){
-                map.put("image",imageViews[0]);
-            }else {
                 map.put("image",imageViews[1]);
+            }else {
+                map.put("image",imageViews[0]);
             }
             map.put("usertotal", waterCursor.getString(2));
             map.put("total", waterCursor.getString(1));

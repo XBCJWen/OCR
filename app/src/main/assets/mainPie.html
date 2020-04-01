@@ -27,7 +27,7 @@
 }
 .body {
     height: 100%;
-    width: 100%;
+    width: 95%;
     text-align: center;
 }
 .chartBox {
@@ -47,7 +47,7 @@
 <!--    initPie([{name:'er',value:34},{name:'ab',value:4},{name:'cd',value:374}]);-->
 <!--    initPie([{"value":"5.0","name":"'微信'"}, {"value":"36.0","name":"'支付宝'"}]);-->
 
-    function initPie(Data) {
+    function initPie(Data,listName) {
         PieObj = echarts.init(document.getElementById(chartPie));
         optionPie = {
             title:{
@@ -64,7 +64,7 @@
                 formatter: '{b}:{c} ({d}%)'
             },
             legend:{
-                bottom:'5%'
+                bottom:'10%'
             },
             toolbox:{
                 feature:{
@@ -73,7 +73,6 @@
             },
             series:[
                 {
-                    name:'帐户占比',
                     type:'pie',
                     data:Data,
                     emphasis: {
@@ -87,9 +86,6 @@
             ]
         };
         PieObj.setOption(optionPie);
-
-
-
         }
 </script>
 </html>

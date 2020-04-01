@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.ocr.AutoActivity;
 import com.example.ocr.DB.DataBaseOpenHelper;
 import com.example.ocr.R;
 
@@ -37,6 +38,8 @@ public class MyFragment extends Fragment {
     private TextView tvName;
     private TextView tvMunber;
     private DataBaseOpenHelper db;
+    private LinearLayout la;
+    private LinearLayout laInfo;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -61,10 +64,18 @@ public class MyFragment extends Fragment {
     };
 
     private void event() {
+        laInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),Info2Activity.class);
+                startActivity(intent);
+            }
+        });
+
         la_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (tvName.getText().equals("未登录")){
+                if (tvName.getText().equals("未登录")) {
                     setUI();
                     LoginSettings settings = new LoginSettings();
                     settings.setAutoFinish(true);//设置登录完成后是否自动关闭授权页
@@ -95,9 +106,16 @@ public class MyFragment extends Fragment {
                             }
                         }
                     });
-                }else {
+                } else {
                     Toast.makeText(getContext(), "已登录，请勿重复登录", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        la.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AutoActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -107,6 +125,8 @@ public class MyFragment extends Fragment {
         la_user = root.findViewById(R.id.la_my);
         tvMunber = root.findViewById(R.id.tv_munber);
         tvName = root.findViewById(R.id.tv_name);
+        la = root.findViewById(R.id.la_auto);
+        laInfo = root.findViewById(R.id.la_info);
         initData();
 
         //一键登录的预取号与初始化
@@ -121,27 +141,28 @@ public class MyFragment extends Fragment {
     }
 
     //登录成功后设置昵称与帐号
-    private void initData(){
+    private void initData() {
         //登录成功后设置昵称与帐号
         List<String> sql = new ArrayList<>();
 //        String createUser = "create table userphone(user real primary key,name text,total real)";
-        String sqll="userphone";
-        db = DataBaseOpenHelper.getInstance(getContext(),"ocrSql",1,sql);
-        Cursor cursor =db.query("userphone",sqll);
-        String name="";
-        String number="";
-        String i="";
-        while (cursor.moveToNext()){
+        String sqll = "userphone";
+        db = DataBaseOpenHelper.getInstance(getContext(), "ocrSql", 1, sql);
+        Cursor cursor = db.query("userphone", sqll);
+        String name = "";
+        String number = "";
+        String i = "";
+        while (cursor.moveToNext()) {
             number = cursor.getString(0);
             name = cursor.getString(1);
             i = cursor.getString(3);
         }
         db.clear();
-        if(i.equals("1")){
+        if (i.equals("1")) {
             tvName.setText(name);
             tvMunber.setText(number);
         }
     }
+
     //一键登录的UI设置
     private void setUI() {
         JVerifyUIConfig uiConfig = new JVerifyUIConfig.Builder()

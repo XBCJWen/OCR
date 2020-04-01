@@ -2,7 +2,6 @@ package com.example.ocr.ui.Count;
 
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,6 +75,8 @@ public class CountFragment extends Fragment implements View.OnClickListener {
                                 db = DataBaseOpenHelper.getInstance(getContext(), "ocrSql", 1, new ArrayList<String>());
                                 Cursor cursor = db.query(sqlQuery);
                                 String starttime = "";
+                                int i =  0;
+                                int k = 0;
                                 while (cursor.moveToNext()) {
                                     String category = cursor.getString(0);
                                     String money = cursor.getString(1);
@@ -83,14 +84,32 @@ public class CountFragment extends Fragment implements View.OnClickListener {
                                     if (time.equals(starttime)) {
 
                                     } else {
+                                        if (i == k ){
+
+                                        }else {
+                                            if (i > k){
+                                                outData.add("0");
+                                                i = 1;
+                                                k = 1;
+                                            }else {
+                                                inData.add("0");
+                                                i = 1;
+                                                k = 1;
+                                            }
+                                        }
                                         xData.add(String.format("'%s'", time));
                                     }
-                                    starttime = time;
                                     if (category.equals("收入")) {
                                         inData.add(money);
-                                    } else {
+                                        i +=1;
+                                    } else if (category.equals("支出")){
                                         outData.add(money);
+                                        k +=1;
+
+
                                     }
+                                    starttime = time;
+
 
                                 }
                                 //调用脚本并传参
@@ -117,6 +136,9 @@ public class CountFragment extends Fragment implements View.OnClickListener {
                                 db = DataBaseOpenHelper.getInstance(getContext(), "ocrSql", 1, new ArrayList<String>());
                                 Cursor cursor = db.query(sqlQuery);
                                 String starttime = "";
+                                int i = 0;
+                                int k = 0;
+
                                 while (cursor.moveToNext()) {
                                     String category = cursor.getString(0);
                                     String money = cursor.getString(1);
@@ -124,14 +146,31 @@ public class CountFragment extends Fragment implements View.OnClickListener {
                                     if (time.equals(starttime)) {
 
                                     } else {
+                                        if (i == k ){
+
+                                        }else {
+                                            if (i > k){
+                                                outData.add("0");
+                                                i = 1;
+                                                k = 1;
+                                            }else {
+                                                inData.add("0");
+                                                i = 1;
+                                                k = 1;
+                                            }
+                                        }
                                         xData.add(String.format("'%s'", time));
                                     }
-                                    starttime = time;
                                     if (category.equals("收入")) {
                                         inData.add(money);
-                                    } else {
+                                        i +=1;
+                                    } else if (category.equals("支出")){
                                         outData.add(money);
+                                        k +=1;
+
+
                                     }
+                                    starttime = time;
 
                                 }
                                 //调用脚本并传参
@@ -146,6 +185,29 @@ public class CountFragment extends Fragment implements View.OnClickListener {
                         tvBar.setBackground(getResources().getDrawable(R.drawable.pieback));
 
                         ecarts.loadUrl("file:///android_asset/mainPie.html");
+                        ecarts.setWebViewClient(new WebViewClient(){
+                            @Override
+                            public void onPageFinished(WebView view, String url) {
+                                List<JsonObject> list = new ArrayList<>();
+                                Cursor cursor = db.query("money","money");
+                                while (cursor.moveToNext()){
+                                    JsonObject json = new JsonObject();
+
+                                    String userName = cursor.getString(0);
+                                    String money = cursor.getString(1);
+                                    json.addProperty("value",money);
+                                    json.addProperty("name",userName);
+
+                                    list.add(json);
+//                            initPie([{value:34,name:'er'},{value:4,name:'ab'},{value:374,name:'cd'}]);
+
+                                }
+
+                                ecarts.loadUrl("javascript:initPie(" + list + ")");
+
+                                super.onPageFinished(view, url);
+                            }
+                        });
                         break;
                 }
             }
@@ -174,7 +236,6 @@ public class CountFragment extends Fragment implements View.OnClickListener {
 
         ArrayAdapter adapter =new ArrayAdapter(getContext(),R.layout.spinner_items_ecaharts,list);
         spinnerEcharts.setAdapter(adapter);
-
         setinit();
 
 
@@ -200,6 +261,8 @@ public class CountFragment extends Fragment implements View.OnClickListener {
                 db = DataBaseOpenHelper.getInstance(getContext(), "ocrSql", 1, new ArrayList<String>());
                 Cursor cursor = db.query(sqlQuery);
                 String starttime = "";
+                int i = 0;
+                int k = 0;
                 while (cursor.moveToNext()) {
                     String category = cursor.getString(0);
                     String money = cursor.getString(1);
@@ -207,14 +270,32 @@ public class CountFragment extends Fragment implements View.OnClickListener {
                     if (time.equals(starttime)) {
 
                     } else {
+                        if (i == k ){
+
+                        }else {
+                            if (i > k){
+                                outData.add("0");
+                                i = 1;
+                                k = 1;
+                            }else {
+                                inData.add("0");
+                                i = 1;
+                                k = 1;
+                            }
+                        }
                         xData.add(String.format("'%s'", time));
                     }
-                    starttime = time;
                     if (category.equals("收入")) {
                         inData.add(money);
-                    } else {
+                        i +=1;
+                    } else if (category.equals("支出")){
                         outData.add(money);
+                        k +=1;
+
+
                     }
+                    starttime = time;
+
 
                 }
                 //调用脚本并传参
@@ -253,21 +334,43 @@ public class CountFragment extends Fragment implements View.OnClickListener {
                         db = DataBaseOpenHelper.getInstance(getContext(), "ocrSql", 1, new ArrayList<String>());
                         Cursor cursor = db.query(sqlQuery);
                         String starttime = "";
+                        int i = 0;
+                        int k = 0;
+
                         while (cursor.moveToNext()) {
                             String category = cursor.getString(0);
                             String money = cursor.getString(1);
                             String time = cursor.getString(2);
+
                             if (time.equals(starttime)) {
 
                             } else {
+                                if (i == k ){
+
+                                }else {
+                                    if (i > k){
+                                        outData.add("0");
+                                        i = 1;
+                                        k = 1;
+                                    }else {
+                                        inData.add("0");
+                                        i = 1;
+                                        k = 1;
+                                    }
+                                }
                                 xData.add(String.format("'%s'", time));
                             }
-                            starttime = time;
                             if (category.equals("收入")) {
                                 inData.add(money);
-                            } else {
+                                i +=1;
+                            } else if (category.equals("支出")){
                                 outData.add(money);
+                                k +=1;
+
+
                             }
+
+                            starttime = time;
 
                         }
                         //调用脚本并传参
@@ -295,6 +398,8 @@ public class CountFragment extends Fragment implements View.OnClickListener {
                         db = DataBaseOpenHelper.getInstance(getContext(), "ocrSql", 1, new ArrayList<String>());
                         Cursor cursor = db.query(sqlQuery);
                         String starttime = "";
+                        int i = 0;
+                        int k = 0;
                         while (cursor.moveToNext()) {
                             String category = cursor.getString(0);
                             String money = cursor.getString(1);
@@ -302,14 +407,32 @@ public class CountFragment extends Fragment implements View.OnClickListener {
                             if (time.equals(starttime)) {
 
                             } else {
+                                if (i == k ){
+
+                                }else {
+                                    if (i > k){
+                                        outData.add("0");
+                                        i = 1;
+                                        k = 1;
+                                    }else {
+                                        inData.add("0");
+                                        i = 1;
+                                        k = 1;
+                                    }
+                                }
                                 xData.add(String.format("'%s'", time));
                             }
-                            starttime = time;
                             if (category.equals("收入")) {
                                 inData.add(money);
-                            } else {
+                                i +=1;
+                            } else if (category.equals("支出")){
                                 outData.add(money);
+                                k +=1;
+
+
                             }
+                            starttime = time;
+
 
                         }
                         //调用脚本并传参
@@ -329,6 +452,8 @@ public class CountFragment extends Fragment implements View.OnClickListener {
                     @Override
                     public void onPageFinished(WebView view, String url) {
                         List<JsonObject> list = new ArrayList<>();
+
+
                         Cursor cursor = db.query("money","money");
                         while (cursor.moveToNext()){
                             JsonObject json = new JsonObject();

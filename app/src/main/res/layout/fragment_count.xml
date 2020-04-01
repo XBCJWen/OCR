@@ -25,11 +25,10 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:background="@drawable/count_item_back"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
 
@@ -40,6 +39,7 @@
             android:gravity="center"
             android:text="条形图"
             android:textSize="18sp" />
+
         <TextView
             android:id="@+id/tv_bar"
             android:layout_width="match_parent"
@@ -47,6 +47,7 @@
             android:gravity="center"
             android:text="柱状图"
             android:textSize="18sp" />
+
         <TextView
             android:id="@+id/tv_pie"
             android:layout_width="match_parent"
@@ -62,9 +63,9 @@
         android:id="@+id/spinnerEcharts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/pieback"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
